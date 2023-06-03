@@ -5,8 +5,8 @@ type vec2 struct {
 	y float64
 }
 
-func newVec2(x, y float64) vec2 {
-	return vec2{x, y}
+func newVec2(x float64) vec2 {
+	return vec2{x, x}
 }
 
 func newVec2XY(x, y float64) vec2 {
