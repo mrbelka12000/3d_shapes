@@ -1,8 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
 	"math/rand"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -12,12 +16,32 @@ const (
 	capacity = 100
 )
 
+// mutex for kids
+var speed int = 1
+
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	run(W, H)
 }
 
 func run(w, h int) {
+	scanner := bufio.NewScanner(os.Stdin)
+
+	go func() {
+		for {
+			scanner.Scan()
+			v := strings.ToLower(scanner.Text())
+			if v == "w" {
+				speed++
+			} else if v == "s" {
+				speed--
+			} else {
+				log.Fatal("invalid speed")
+			}
+		}
+
+	}()
+
 	stars := make([]*Star, capacity)
 	for i := 0; i < capacity; i++ {
 		stars[i] = NewStar(w, h)

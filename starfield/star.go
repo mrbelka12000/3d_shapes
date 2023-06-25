@@ -60,14 +60,14 @@ func (s *Star) Show(cx, cy int, grid []byte) {
 		}
 	}
 	if xStep > s.X {
-		s.X++
+		s.X += speed
 	} else if xStep < s.X {
-		s.X--
+		s.X -= speed
 	}
 	if yStep > s.Y {
-		s.Y++
+		s.Y += speed
 	} else if yStep < s.Y {
-		s.Y--
+		s.Y -= speed
 	}
 	pos := s.X + s.Y*W
 	if pos >= gridCap || pos < 0 {
