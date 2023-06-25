@@ -59,6 +59,9 @@ func (s *Star) Show(cx, cy int, grid []byte) {
 			grid[pos] = char
 		}
 	}
+	if speed < 0 {
+		speed = 0
+	}
 	if xStep > s.X {
 		s.X += speed
 	} else if xStep < s.X {
