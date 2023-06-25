@@ -29,6 +29,9 @@ func run(w, h int) {
 
 	go func() {
 		for {
+			if speed < 0 {
+				speed = 0
+			}
 			scanner.Scan()
 			v := strings.ToLower(scanner.Text())
 			if v == "w" {
